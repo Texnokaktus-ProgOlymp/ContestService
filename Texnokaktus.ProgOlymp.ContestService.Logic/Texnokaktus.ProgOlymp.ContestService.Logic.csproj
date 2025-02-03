@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.DataAccess\Texnokaktus.ProgOlymp.ContestService.DataAccess.csproj" />
+      <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.Domain\Texnokaktus.ProgOlymp.ContestService.Domain.csproj" />
+    </ItemGroup>
+
+</Project>

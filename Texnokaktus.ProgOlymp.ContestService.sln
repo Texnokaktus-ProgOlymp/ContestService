@@ -2,6 +2,18 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texnokaktus.ProgOlymp.ContestService", "Texnokaktus.ProgOlymp.ContestService\Texnokaktus.ProgOlymp.ContestService.csproj", "{D5E78F34-94FB-439A-9759-8BEB83043AF0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{CF7157F7-A327-46DC-B85B-B65D39EF054D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texnokaktus.ProgOlymp.Common.Contracts", "modules\Common.Contracts\Texnokaktus.ProgOlymp.Common.Contracts\Texnokaktus.ProgOlymp.Common.Contracts.csproj", "{BE93DB4A-AF45-43FF-9093-8CE786849307}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texnokaktus.ProgOlymp.ContestService.Infrastructure", "Texnokaktus.ProgOlymp.ContestService.Infrastructure\Texnokaktus.ProgOlymp.ContestService.Infrastructure.csproj", "{875A5AFA-AD55-4886-BCDE-291E6E9B5384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texnokaktus.ProgOlymp.ContestService.DataAccess", "Texnokaktus.ProgOlymp.ContestService.DataAccess\Texnokaktus.ProgOlymp.ContestService.DataAccess.csproj", "{84E8E509-1A1D-4BDB-8E3D-C0EFF18D2CBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texnokaktus.ProgOlymp.ContestService.Logic", "Texnokaktus.ProgOlymp.ContestService.Logic\Texnokaktus.ProgOlymp.ContestService.Logic.csproj", "{B5E769A9-2D5B-4C2F-B5F7-43601AE29A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Texnokaktus.ProgOlymp.ContestService.Domain", "Texnokaktus.ProgOlymp.ContestService.Domain\Texnokaktus.ProgOlymp.ContestService.Domain.csproj", "{ADDB72EA-EF20-4B13-AF12-F6DD4E9E8D22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +24,28 @@ Global
 		{D5E78F34-94FB-439A-9759-8BEB83043AF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5E78F34-94FB-439A-9759-8BEB83043AF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E78F34-94FB-439A-9759-8BEB83043AF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE93DB4A-AF45-43FF-9093-8CE786849307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE93DB4A-AF45-43FF-9093-8CE786849307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE93DB4A-AF45-43FF-9093-8CE786849307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE93DB4A-AF45-43FF-9093-8CE786849307}.Release|Any CPU.Build.0 = Release|Any CPU
+		{875A5AFA-AD55-4886-BCDE-291E6E9B5384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{875A5AFA-AD55-4886-BCDE-291E6E9B5384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{875A5AFA-AD55-4886-BCDE-291E6E9B5384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{875A5AFA-AD55-4886-BCDE-291E6E9B5384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E8E509-1A1D-4BDB-8E3D-C0EFF18D2CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E8E509-1A1D-4BDB-8E3D-C0EFF18D2CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E8E509-1A1D-4BDB-8E3D-C0EFF18D2CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E8E509-1A1D-4BDB-8E3D-C0EFF18D2CBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5E769A9-2D5B-4C2F-B5F7-43601AE29A15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5E769A9-2D5B-4C2F-B5F7-43601AE29A15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5E769A9-2D5B-4C2F-B5F7-43601AE29A15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5E769A9-2D5B-4C2F-B5F7-43601AE29A15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDB72EA-EF20-4B13-AF12-F6DD4E9E8D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDB72EA-EF20-4B13-AF12-F6DD4E9E8D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDB72EA-EF20-4B13-AF12-F6DD4E9E8D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDB72EA-EF20-4B13-AF12-F6DD4E9E8D22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BE93DB4A-AF45-43FF-9093-8CE786849307} = {CF7157F7-A327-46DC-B85B-B65D39EF054D}
 	EndGlobalSection
 EndGlobal

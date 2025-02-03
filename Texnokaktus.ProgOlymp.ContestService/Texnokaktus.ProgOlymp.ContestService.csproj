@@ -10,4 +10,10 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.DataAccess\Texnokaktus.ProgOlymp.ContestService.DataAccess.csproj" />
+      <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.Infrastructure\Texnokaktus.ProgOlymp.ContestService.Infrastructure.csproj" />
+      <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.Logic\Texnokaktus.ProgOlymp.ContestService.Logic.csproj" />
+    </ItemGroup>
+
 </Project>
