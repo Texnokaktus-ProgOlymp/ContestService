@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Http.HttpResults;
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using Texnokaktus.ProgOlymp.ContestService.Converters;
 using Texnokaktus.ProgOlymp.ContestService.DataAccess;
-using Texnokaktus.ProgOlymp.ContestService.DataAccess.Context;
 using Texnokaktus.ProgOlymp.ContestService.Infrastructure;
-using Texnokaktus.ProgOlymp.ContestService.Infrastructure.Clients.Abstractions;
 using Texnokaktus.ProgOlymp.ContestService.Logic;
 using Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
 
@@ -17,19 +16,21 @@ builder.Services.AddSingleton(TimeProvider.System);
 
 builder.Services.AddGrpcClients(builder.Configuration);
 
-builder.Services.AddEndpointsApiExplorer().AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new() { Title = "ContestService", Version = "v1" });
-});
+builder.Services.AddOpenApi(options => options.AddSchemaTransformer<SchemaTransformer>());
+
+builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.MapSwagger();
-    app.UseSwaggerUI();
+    app.MapOpenApi();
+    app.UseSwaggerUI(options => options.ConfigObject.Urls = [new() { Name = "v1", Url = "/openapi/v1.json" }]);
 }
 
-app.MapGet("/", () => "Hello World");
+app.MapGroup("api/contests")
+   .MapGet("{contestId:int}",
+           (int contestId, IRegistrationStateService registrationStateService) =>
+               registrationStateService.GetState(contestId));
 
 await app.RunAsync();
