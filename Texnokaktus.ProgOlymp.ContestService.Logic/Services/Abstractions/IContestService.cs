@@ -4,5 +4,7 @@ public interface IContestService
 {
     Task<int> AddContestAsync(string name,
                               DateTimeOffset registrationStart,
-                              DateTimeOffset registrationEnd);
+                              DateTimeOffset registrationFinish,
+                              long? preliminaryStageId,
+                              long? finalStageId);
 }

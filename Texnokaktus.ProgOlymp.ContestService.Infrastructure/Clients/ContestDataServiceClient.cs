@@ -17,7 +17,7 @@ internal class ContestDataServiceClient(ContestDataService.ContestDataServiceCli
         return response.ContestUrl;
     }
 
-    public async Task<ContestDescription> GetContest(long contestId)
+    public async Task<ContestDescription> GetContestAsync(long contestId)
     {
         var request = new GetContestRequest
         {

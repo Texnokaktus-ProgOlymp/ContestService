@@ -5,5 +5,5 @@ namespace Texnokaktus.ProgOlymp.ContestService.Infrastructure.Clients.Abstractio
 public interface IContestDataServiceClient
 {
     Task<string?> GetContestUrlAsync(long contestId);
-    Task<ContestDescription> GetContest(long contestId);
+    Task<ContestDescription> GetContestAsync(long contestId);
 }

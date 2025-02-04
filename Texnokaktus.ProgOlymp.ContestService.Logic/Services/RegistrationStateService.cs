@@ -6,7 +6,7 @@ using Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
 
 namespace Texnokaktus.ProgOlymp.ContestService.Logic.Services;
 
-public class RegistrationStateService(IUnitOfWork unitOfWork, TimeProvider timeProvider) : IRegistrationStateService
+internal class RegistrationStateService(IUnitOfWork unitOfWork, TimeProvider timeProvider) : IRegistrationStateService
 {
     public async Task<ContestRegistrationState?> GetState(int contestId)
     {
@@ -26,7 +26,7 @@ public class RegistrationStateService(IUnitOfWork unitOfWork, TimeProvider timeP
         var now = timeProvider.GetUtcNow();
 
         if (now < registrationStart) return RegistrationState.NotStarted;
-        if (now > registrationFinish) return RegistrationState.Finished;
+        if (now >= registrationFinish) return RegistrationState.Finished;
         return RegistrationState.InProgress;
     }
 }

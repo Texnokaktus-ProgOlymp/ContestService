@@ -9,6 +9,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.DataAccess\Texnokaktus.ProgOlymp.ContestService.DataAccess.csproj" />
       <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.Domain\Texnokaktus.ProgOlymp.ContestService.Domain.csproj" />
+      <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.Infrastructure\Texnokaktus.ProgOlymp.ContestService.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
