@@ -12,4 +12,8 @@
       <ProjectReference Include="..\Texnokaktus.ProgOlymp.ContestService.Infrastructure\Texnokaktus.ProgOlymp.ContestService.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Scrutor" Version="6.0.1" />
+    </ItemGroup>
+
 </Project>

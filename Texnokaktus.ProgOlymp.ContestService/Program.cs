@@ -12,6 +12,8 @@ builder.Services
        .AddDataAccess(optionsBuilder => optionsBuilder.UseSqlServer(builder.Configuration.GetConnectionString("DefaultDb")))
        .AddLogicServices();
 
+builder.Services.AddMemoryCache();
+
 builder.Services.AddSingleton(TimeProvider.System);
 
 builder.Services.AddGrpcClients(builder.Configuration);
