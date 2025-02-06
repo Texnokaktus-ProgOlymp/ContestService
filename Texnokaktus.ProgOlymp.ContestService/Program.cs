@@ -62,6 +62,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapGrpcService<ContestServiceImpl>();
+app.MapGrpcService<StateServiceImpl>();
 
 app.MapGroup("api/contests")
    .MapGet("{contestId:int}",
