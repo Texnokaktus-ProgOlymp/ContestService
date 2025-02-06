@@ -65,8 +65,8 @@ app.MapGrpcService<ContestServiceImpl>();
 
 app.MapGroup("api/contests")
    .MapGet("{contestId:int}",
-           async Task<Results<Ok<ContestRegistrationState>, NotFound>> (int contestId, IRegistrationStateService registrationStateService) =>
-               await registrationStateService.GetState(contestId) is { } state
+           async Task<Results<Ok<ContestRegistrationState>, NotFound>> (int contestId, IRegistrationService registrationStateService) =>
+               await registrationStateService.GetRegistrationState(contestId) is { } state
                    ? TypedResults.Ok(state)
                    : TypedResults.NotFound());
 
