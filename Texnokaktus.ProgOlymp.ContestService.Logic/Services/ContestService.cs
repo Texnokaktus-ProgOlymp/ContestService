@@ -1,4 +1,5 @@
 using Texnokaktus.ProgOlymp.ContestService.DataAccess.Services.Abstractions;
+using Texnokaktus.ProgOlymp.ContestService.Domain;
 using Texnokaktus.ProgOlymp.ContestService.Infrastructure.Clients.Abstractions;
 using Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
 
@@ -42,4 +43,28 @@ internal class ContestService(IUnitOfWork unitOfWork, IContestDataServiceClient 
 
         return contest.Id;
     }
+
+    public async Task<Contest?> GetContestAsync(int id)
+    {
+        var contest = await unitOfWork.ContestRepository.GetById(id);
+        return contest?.MapContest();
+    }
+}
+
+file static class MappingExtensions
+{
+    public static Contest MapContest(this DataAccess.Entities.Contest contest) =>
+        new(contest.Id,
+            contest.Name,
+            contest.RegistrationStart,
+            contest.RegistrationFinish,
+            contest.PreliminaryStage?.MapContestStage(),
+            contest.FinalStage?.MapContestStage());
+
+    private static ContestStage MapContestStage(this DataAccess.Entities.ContestStage contestStage) =>
+        new(contestStage.Id,
+            contestStage.Name,
+            contestStage.ContestStart,
+            contestStage.ContestFinish,
+            contestStage.Duration);
 }

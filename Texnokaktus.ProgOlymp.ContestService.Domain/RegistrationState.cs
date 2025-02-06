@@ -2,6 +2,7 @@
 
 public enum RegistrationState : byte
 {
+    Unavailable,
     NotStarted,
     InProgress,
     Finished

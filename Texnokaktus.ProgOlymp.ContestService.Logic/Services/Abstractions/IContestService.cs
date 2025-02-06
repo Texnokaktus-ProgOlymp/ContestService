@@ -1,3 +1,5 @@
+using Texnokaktus.ProgOlymp.ContestService.Domain;
+
 namespace Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
 
 public interface IContestService
@@ -7,4 +9,6 @@ public interface IContestService
                               DateTimeOffset registrationFinish,
                               long? preliminaryStageId,
                               long? finalStageId);
+
+    Task<Contest?> GetContestAsync(int id);
 }

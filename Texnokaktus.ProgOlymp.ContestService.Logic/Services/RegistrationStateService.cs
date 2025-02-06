@@ -6,18 +6,20 @@ using Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
 
 namespace Texnokaktus.ProgOlymp.ContestService.Logic.Services;
 
-internal class RegistrationStateService(IUnitOfWork unitOfWork, TimeProvider timeProvider) : IRegistrationStateService
+internal class RegistrationStateService(IContestService contestService, TimeProvider timeProvider) : IRegistrationStateService
 {
     public async Task<ContestRegistrationState?> GetState(int contestId)
     {
-        if (await unitOfWork.ContestRepository.GetById(contestId) is not { } contest) return null;
+        if (await contestService.GetContestAsync(contestId) is not { } contest) return null;
 
         return new(contest.Id,
                    contest.Name,
                    contest.RegistrationStart,
                    contest.RegistrationFinish,
-                   GetState(contest.RegistrationStart,
-                            contest.RegistrationFinish));
+                   contest.PreliminaryStage is not null
+                       ? GetState(contest.RegistrationStart,
+                                  contest.RegistrationFinish)
+                       : RegistrationState.Unavailable);
     }
 
     [SuppressMessage("ReSharper", "ConvertIfStatementToReturnStatement")]
