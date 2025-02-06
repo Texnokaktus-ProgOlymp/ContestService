@@ -6,12 +6,17 @@ namespace Texnokaktus.ProgOlymp.ContestService.Logic.Services;
 
 public class ContestServiceCachingDecorator(IContestService contestService, IMemoryCache memoryCache) : IContestService
 {
-    public Task<int> AddContestAsync(string name,
-                                     DateTimeOffset registrationStart,
-                                     DateTimeOffset registrationFinish,
-                                     long? preliminaryStageId,
-                                     long? finalStageId) =>
-        contestService.AddContestAsync(name, registrationStart, registrationFinish, preliminaryStageId, finalStageId);
+    public async Task<int> AddContestAsync(string name,
+                                           DateTimeOffset registrationStart,
+                                           DateTimeOffset registrationFinish,
+                                           long? preliminaryStageId,
+                                           long? finalStageId)
+    {
+        var id = await contestService.AddContestAsync(name, registrationStart, registrationFinish, preliminaryStageId, finalStageId);
+        memoryCache.Remove(GetKey(id));
+
+        return id;
+    }
 
     public Task<Contest?> GetContestAsync(int id) =>
         memoryCache.GetOrCreateAsync(GetKey(id),
