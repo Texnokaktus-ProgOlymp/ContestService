@@ -1,11 +1,13 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using StackExchange.Redis;
 using Texnokaktus.ProgOlymp.ContestService.Converters;
 using Texnokaktus.ProgOlymp.ContestService.DataAccess;
+using Texnokaktus.ProgOlymp.ContestService.Domain;
 using Texnokaktus.ProgOlymp.ContestService.Infrastructure;
 using Texnokaktus.ProgOlymp.ContestService.Logic;
 using Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
@@ -60,7 +62,9 @@ if (app.Environment.IsDevelopment())
 
 app.MapGroup("api/contests")
    .MapGet("{contestId:int}",
-           (int contestId, IRegistrationStateService registrationStateService) =>
-               registrationStateService.GetState(contestId));
+           async Task<Results<Ok<ContestRegistrationState>, NotFound>> (int contestId, IRegistrationStateService registrationStateService) =>
+               await registrationStateService.GetState(contestId) is { } state
+                   ? TypedResults.Ok(state)
+                   : TypedResults.NotFound());
 
 await app.RunAsync();
