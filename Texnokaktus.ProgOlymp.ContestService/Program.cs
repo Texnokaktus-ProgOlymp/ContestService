@@ -11,6 +11,7 @@ using Texnokaktus.ProgOlymp.ContestService.Domain;
 using Texnokaktus.ProgOlymp.ContestService.Infrastructure;
 using Texnokaktus.ProgOlymp.ContestService.Logic;
 using Texnokaktus.ProgOlymp.ContestService.Logic.Services.Abstractions;
+using Texnokaktus.ProgOlymp.ContestService.Services.Grpc;
 using Texnokaktus.ProgOlymp.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -59,6 +60,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(options => options.ConfigObject.Urls = [new() { Name = "v1", Url = "/openapi/v1.json" }]);
     app.MapGrpcReflectionService();
 }
+
+app.MapGrpcService<ContestServiceImpl>();
 
 app.MapGroup("api/contests")
    .MapGet("{contestId:int}",
