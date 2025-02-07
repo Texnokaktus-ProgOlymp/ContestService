@@ -7,7 +7,7 @@ namespace Texnokaktus.ProgOlymp.ContestService.Logic;
 public static class DiExtensions
 {
     public static IServiceCollection AddLogicServices(this IServiceCollection services) =>
-        services.AddScoped<IRegistrationStateService, RegistrationStateService>()
+        services.AddScoped<IRegistrationService, RegistrationService>()
                 .AddScoped<IContestService, Logic.Services.ContestService>()
                 .Decorate<IContestService, ContestServiceCachingDecorator>();
 }
