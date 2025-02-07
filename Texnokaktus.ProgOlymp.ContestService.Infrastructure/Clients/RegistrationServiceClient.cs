@@ -5,7 +5,7 @@ namespace Texnokaktus.ProgOlymp.ContestService.Infrastructure.Clients;
 
 public class RegistrationServiceClient(RegistrationService.RegistrationServiceClient client) : IRegistrationServiceClient
 {
-    public async Task<Error?> RegisterParticipantAsync(long contestStageId, string login, string? displayName)
+    public async Task RegisterParticipantAsync(long contestStageId, string login, string? displayName)
     {
         var request = new RegisterParticipantRequest
         {
@@ -13,8 +13,6 @@ public class RegistrationServiceClient(RegistrationService.RegistrationServiceCl
             YandexIdLogin = login,
             DisplayName = displayName
         };
-        var response = await client.RegisterParticipantAsync(request);
-
-        return response.Error;
+        await client.RegisterParticipantAsync(request);
     }
 }
