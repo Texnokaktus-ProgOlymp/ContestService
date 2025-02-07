@@ -28,9 +28,8 @@ public class RegistrationService(IContestService contestService,
 
         if (GetState(contest, timeProvider.GetUtcNow()) != RegistrationState.InProgress)
             throw new RegistrationIsNotAvailableException();
-        
-        if (await registrationServiceClient.RegisterParticipantAsync(contest.PreliminaryStage!.Id, login, displayName) is { } error)
-            throw new RegistrationException(error.Message);
+
+        await registrationServiceClient.RegisterParticipantAsync(contest.PreliminaryStage!.Id, login, displayName);
     }
     
     [SuppressMessage("ReSharper", "ConvertIfStatementToReturnStatement")]
